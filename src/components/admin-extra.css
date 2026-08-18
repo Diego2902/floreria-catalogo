@@ -1,0 +1,492 @@
+/* ==========================================================================
+   admin-extra.css — Panel Admin (rediseño SaaS moderno)
+   Todo scopeado bajo .admin-app para no afectar el resto del sitio
+   (Home, Navbar, Login/Register de clientes usan las mismas clases base).
+   ========================================================================== */
+
+.admin-app {
+  --adm-pink: #e83e8c;
+  --adm-pink-dark: #d6337a;
+  --adm-pink-soft: #fdeaf3;
+  --adm-ink: #1c1c1e;
+  --adm-ink-soft: #6b7280;
+  --adm-bg: #f6f4f1;
+  --adm-card: #ffffff;
+  --adm-border: #eae6df;
+  --adm-border-strong: #ddd7cd;
+  --adm-danger: #c81e1e;
+  --adm-danger-soft: #fde8e8;
+  --adm-success: #15803d;
+  --adm-success-soft: #dcfce7;
+  --adm-radius-sm: 8px;
+  --adm-radius: 14px;
+  --adm-radius-lg: 20px;
+  --adm-shadow-sm: 0 1px 2px rgba(28,28,30,.05);
+  --adm-shadow: 0 10px 30px -12px rgba(28,28,30,.14), 0 2px 8px rgba(28,28,30,.04);
+}
+
+/* ---------- Layout ---------- */
+.admin-app.dash-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--adm-bg);
+}
+
+.admin-app .dash-sidebar {
+  width: 264px;
+  flex-shrink: 0;
+  background: var(--adm-card);
+  border-right: 1px solid var(--adm-border);
+  display: flex;
+  flex-direction: column;
+  padding: 28px 20px;
+}
+
+.admin-app .dash-brand {
+  padding: 4px 8px 24px;
+  border-bottom: none;
+}
+.admin-app .dash-brand h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--adm-ink);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.admin-app .dash-brand h3::before {
+  content: '✦';
+  color: var(--adm-pink);
+  margin-right: 6px;
+}
+.admin-app .dash-brand p {
+  margin: 6px 0 0;
+  font-size: 0.78rem;
+  color: var(--adm-ink-soft);
+  word-break: break-all;
+}
+
+.admin-app .dash-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0;
+  flex: 1;
+}
+.admin-app .dash-nav button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 11px 14px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--adm-ink-soft);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.admin-app .dash-nav button:hover {
+  background: var(--adm-bg);
+  color: var(--adm-ink);
+}
+.admin-app .dash-nav button.active {
+  background: var(--adm-pink-soft);
+  color: var(--adm-pink-dark);
+  font-weight: 600;
+}
+
+.admin-app .dash-logout {
+  margin-top: 12px;
+  background: none;
+  border: 1px solid var(--adm-border);
+  color: var(--adm-danger);
+  padding: 11px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: .15s;
+}
+.admin-app .dash-logout:hover {
+  background: var(--adm-danger-soft);
+  border-color: transparent;
+}
+
+.admin-app .dash-content {
+  flex: 1;
+  padding: 36px 40px;
+  overflow-y: auto;
+}
+
+/* ---------- Tarjetas ---------- */
+.admin-app .dash-card {
+  background: var(--adm-card);
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius-lg);
+  padding: 28px 30px;
+  box-shadow: var(--adm-shadow-sm);
+  margin-bottom: 24px;
+}
+.admin-app .dash-card h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--adm-ink);
+  margin: 0 0 20px;
+}
+.admin-app .dash-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  color: var(--adm-ink);
+  margin: 0;
+}
+
+.admin-app .card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.admin-app .card-header-row h2 { margin: 0; }
+
+.admin-app .hint-text {
+  color: var(--adm-ink-soft);
+  font-size: 0.85rem;
+  margin: 2px 0 18px;
+}
+
+/* ---------- Botones ---------- */
+.admin-app .btn-submit {
+  background: var(--adm-pink);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: var(--adm-radius-sm);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(232,62,140,.25);
+  transition: background .15s, transform .1s, box-shadow .15s;
+}
+.admin-app .btn-submit:hover:not(:disabled) {
+  background: var(--adm-pink-dark);
+  box-shadow: 0 4px 14px rgba(214,51,122,.3);
+  transform: translateY(-1px);
+}
+.admin-app .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+.admin-app .btn-secondary {
+  background: #fff;
+  border: 1px solid var(--adm-border-strong);
+  color: var(--adm-ink);
+  padding: 11px 18px;
+  border-radius: var(--adm-radius-sm);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: .15s;
+}
+.admin-app .btn-secondary:hover { background: var(--adm-bg); border-color: var(--adm-ink-soft); }
+
+.admin-app .btn-inline,
+.admin-app .btn-secondary.btn-inline,
+.admin-app .btn-submit.btn-inline { width: auto; margin: 0; padding: 10px 18px; }
+
+/* ---------- Inputs ---------- */
+.admin-app .search-input,
+.admin-app .admin-input,
+.admin-app .inline-form input[type="text"],
+.admin-app .inline-form input[type="email"],
+.admin-app .dash-form input,
+.admin-app .dash-form select,
+.admin-app .dash-form textarea {
+  padding: 11px 14px;
+  border: 1.5px solid var(--adm-border-strong);
+  border-radius: var(--adm-radius-sm);
+  font-size: 0.92rem;
+  font-family: inherit;
+  background: #fff;
+  color: var(--adm-ink);
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color .15s, box-shadow .15s;
+}
+.admin-app .search-input:focus,
+.admin-app .admin-input:focus,
+.admin-app .inline-form input:focus,
+.admin-app .dash-form input:focus,
+.admin-app .dash-form select:focus,
+.admin-app .dash-form textarea:focus {
+  outline: none;
+  border-color: var(--adm-pink);
+  box-shadow: 0 0 0 3px var(--adm-pink-soft);
+}
+.admin-app .search-input { margin-bottom: 18px; }
+.admin-app .dash-form textarea { resize: vertical; min-height: 90px; }
+
+.admin-app .inline-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 22px;
+  padding: 18px;
+  background: var(--adm-bg);
+  border-radius: var(--adm-radius);
+  border: 1px solid var(--adm-border);
+}
+.admin-app .inline-form input { flex: 1; min-width: 200px; }
+.admin-app .checkbox-inline { margin: 0; white-space: nowrap; }
+
+.admin-app .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--adm-ink);
+}
+.admin-app .checkbox-label input[type="checkbox"] {
+  width: 16px; height: 16px; accent-color: var(--adm-pink); cursor: pointer;
+}
+
+.admin-app .orden-controls { display: flex; gap: 4px; }
+.admin-app .orden-controls button { padding: 4px 9px; border-radius: 6px; }
+
+/* ---------- Formularios largos ---------- */
+.admin-app .dash-form { display: flex; flex-direction: column; gap: 16px; }
+.admin-app .dash-form label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--adm-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
+.admin-app .form-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.admin-app .form-col { flex: 1; min-width: 180px; display: flex; flex-direction: column; gap: 6px; }
+
+.admin-app .form-section-title {
+  margin: 26px 0 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--adm-border);
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--adm-ink);
+}
+.admin-app .form-section-title:first-of-type { border-top: none; padding-top: 0; margin-top: 4px; }
+
+.admin-app .form-actions { display: flex; gap: 12px; margin-top: 8px; }
+.admin-app .form-actions .btn-submit { width: auto; }
+
+/* ---------- Badges ---------- */
+.admin-app .badge-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.admin-app .estado-toggle {
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  transition: background .15s, transform .1s, opacity .15s;
+}
+.admin-app .estado-toggle:hover:not(:disabled) {
+  background: var(--adm-bg);
+  transform: scale(1.03);
+}
+.admin-app .estado-toggle:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+.admin-app .badge-success { background: var(--adm-success-soft); color: var(--adm-success); }
+.admin-app .badge-muted { background: #f1efe9; color: var(--adm-ink-soft); }
+
+/* ---------- Tablas ---------- */
+.admin-app .dash-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 6px; }
+.admin-app .dash-table th {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--adm-ink-soft);
+  border-bottom: 1px solid var(--adm-border);
+}
+.admin-app .dash-table td {
+  padding: 14px;
+  font-size: 0.9rem;
+  color: var(--adm-ink);
+  border-bottom: 1px solid var(--adm-border);
+  vertical-align: middle;
+}
+.admin-app .dash-table tbody tr { transition: background .12s; }
+.admin-app .dash-table tbody tr:hover { background: var(--adm-bg); }
+.admin-app .dash-table tbody tr:last-child td { border-bottom: none; }
+.admin-app .td-img {
+  width: 44px; height: 44px; object-fit: cover; border-radius: 10px; border: 1px solid var(--adm-border);
+}
+
+.admin-app .btn-icon {
+  background: none; border: none; padding: 6px 12px; cursor: pointer;
+  font-size: 0.82rem; font-weight: 600; border-radius: 8px; margin-right: 6px; transition: .15s;
+}
+.admin-app .btn-icon.edit { color: #1d4ed8; }
+.admin-app .btn-icon.edit:hover { background: #dbeafe; }
+.admin-app .btn-icon.delete { color: var(--adm-danger); }
+.admin-app .btn-icon.delete:hover { background: var(--adm-danger-soft); }
+.admin-app .btn-icon:not(.edit):not(.delete):hover { background: var(--adm-bg); }
+
+/* ---------- Galería de fotos ---------- */
+.admin-app .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.admin-app .gallery-item {
+  border-radius: var(--adm-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--adm-border);
+  box-shadow: var(--adm-shadow-sm);
+}
+.admin-app .gallery-item img { width: 100%; height: 100px; object-fit: cover; display: block; }
+.admin-app .gallery-item-actions { display: flex; justify-content: center; gap: 4px; padding: 6px; background: #fff; }
+.admin-app .gallery-item-actions button {
+  border: none; background: var(--adm-bg); border-radius: 6px; padding: 3px 8px; cursor: pointer; font-size: 0.75rem;
+}
+.admin-app .gallery-item-actions button.delete { color: var(--adm-danger); }
+.admin-app .gallery-item-actions button.delete:hover { background: var(--adm-danger-soft); }
+
+/* ---------- Secciones (checkboxes en el form de producto) ---------- */
+.admin-app .secciones-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  padding: 12px 14px;
+  background: var(--adm-bg);
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius);
+}
+
+/* ---------- Alertas ---------- */
+.admin-app .auth-alert {
+  padding: 13px 16px;
+  border-radius: var(--adm-radius-sm);
+  margin-bottom: 20px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-align: left;
+}
+.admin-app .alert-error { background: var(--adm-danger-soft); color: var(--adm-danger); }
+.admin-app .alert-success { background: var(--adm-success-soft); color: var(--adm-success); }
+
+/* ---------- Login del panel ---------- */
+.admin-app.auth-container {
+  background: linear-gradient(180deg, var(--adm-bg), #fff);
+}
+.admin-app .auth-card {
+  border-radius: var(--adm-radius-lg);
+  box-shadow: var(--adm-shadow);
+  border: 1px solid var(--adm-border);
+}
+.admin-app .auth-title { font-family: 'Fraunces', serif; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .admin-app.dash-layout { flex-direction: column; }
+  
+  /* Sidebar se convierte en un Navbar superior en móviles */
+  .admin-app .dash-sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap; /* Permite que el nav salte a la siguiente línea */
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--adm-border);
+    gap: 10px;
+  }
+  
+  .admin-app .dash-brand { padding: 0; }
+  .admin-app .dash-brand p { display: none; }
+  
+  /* Botón de cerrar sesión arriba a la derecha */
+  .admin-app .dash-logout { margin: 0; padding: 8px 14px; font-size: 0.8rem; }
+  
+  /* Menú de navegación abajo del logo, scrolleable horizontalmente */
+  .admin-app .dash-nav { 
+    flex-direction: row; 
+    overflow-x: auto; 
+    flex: 1 1 100%; 
+    padding: 4px 0 0 0; 
+    gap: 8px; 
+    -webkit-overflow-scrolling: touch;
+  }
+  .admin-app .dash-nav::-webkit-scrollbar { display: none; /* Oculta la barra scroll */ }
+  .admin-app .dash-nav button { white-space: nowrap; flex: 1; justify-content: center; }
+  
+  .admin-app .dash-content { padding: 20px; }
+
+  /* Truco de CSS: Hace que las tablas no rompan la pantalla y tengan scroll táctil */
+  .admin-app .dash-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    border-bottom: 1px solid var(--adm-border);
+  }
+  .admin-app .dash-table td, .admin-app .dash-table th {
+    white-space: nowrap;
+  }
+}
+
+/* Pantallas aún más pequeñas (Teléfonos) */
+@media (max-width: 600px) {
+  .admin-app .dash-content { padding: 15px 10px; }
+  .admin-app .dash-card { padding: 20px 15px; margin-bottom: 15px; }
+
+  /* Cabeceras de tarjetas apiladas */
+  .admin-app .card-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .admin-app .card-header-row .btn-submit,
+  .admin-app .card-header-row .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Formularios responsivos: 1 sola columna */
+  .admin-app .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .admin-app .inline-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .admin-app .inline-form input {
+    width: 100%;
+  }
+  .admin-app .inline-form .btn-submit {
+    width: 100%;
+  }
+}
